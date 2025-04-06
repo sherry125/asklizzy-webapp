@@ -1,0 +1,46 @@
+.app {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.chat-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+}
+
+.user {
+  text-align: right;
+  color: #333;
+}
+
+.bot {
+  text-align: left;
+  color: #2c3e50;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.categories button {
+  margin: 5px;
+}
