@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+//Used AI tool's help for rendering below
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
