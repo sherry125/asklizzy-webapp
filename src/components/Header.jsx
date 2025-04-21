@@ -1,10 +1,13 @@
+import React from 'react';
+import logo from '../images/asklizzy-logo.png';
+import './Header.css';
+
 function Header() {
-    return (
-      <header className="header">
-        <h1>AskLizzy</h1>
-        <p>Your Office Tech Support Assistant</p>
-      </header>
-    );
-  }
-  
-  export default Header;  
+  return (
+    <header className="header">
+      <img src={logo} alt="AskLizzy Logo" className="header-logo" />
+    </header>
+  );
+}
+
+export default Header;

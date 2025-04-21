@@ -1,141 +1,195 @@
-/* General Reset */
-body {
+/* 1. Ensure full‐height flex layout */
+html, body {
+  height: 100%;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f2f6f9;
+  color: #2c3e50;
 }
 
-/* Center page content */
+/* 2. Main content wrapper grows to fill available space */
 .page-container {
+  flex: 1;                     /* ← This pushes the footer down */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  min-height: 70vh;
   text-align: center;
 }
 
-/* Header styles */
+/* 3. Header */
 .header {
-  background-color: #3498db;
-  color: #fff;
-  padding: 2rem;
-  text-align: center;
-}
-
-/* Navbar styles */
-.navbar {
-  background-color: #2c3e50;
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
-}
-
-.navbar a {
-  margin: 0 1rem;
-  color: #ecf0f1;
-  text-decoration: none;
-}
-
-/* Footer styles */
-.footer {
-  background-color: #2c3e50;
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
-  position: relative;
-  bottom: 0;
   width: 100%;
+  background-color: #ff914d;   /* orange */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.header-logo {
+  width: 40px;
+  margin-right: 1rem;
+}
+.header-title {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-/* Chat container */
+/* 4. Navbar */
+.navbar {
+  background-color: #3ab5fc;   /* blue */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.75rem;
+}
+.navbar a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0.5rem 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.navbar a:hover {
+  color: #ffa769;              /* hover accent */
+}
+
+/* 5. Chat area */
 .chat-box {
   width: 100%;
   max-width: 600px;
-  height: 300px;
-  border: 2px solid #ccc;
+  height: 40vh;                /* shorter so buttons/footer remain visible */
+  border: 2px solid #ced4da;
   border-radius: 10px;
-  overflow-y: auto;
   background-color: #ffffff;
   padding: 1rem;
-  margin: 1.5rem 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Chat messages */
+/* 6. Messages */
 .message {
   margin: 0.5rem 0;
   padding: 0.75rem;
   border-radius: 10px;
   max-width: 80%;
+  word-wrap: break-word;
 }
-
 .message.bot {
-  background-color: #e8f4fc;
-  color: #2c3e50;
-  text-align: left;
+  background-color: #e3f2fd;
+  color: #0d47a1;
   align-self: flex-start;
 }
-
 .message.user {
   background-color: #d1ecf1;
-  color: #2980b9;
-  text-align: right;
+  color: #006064;
   align-self: flex-end;
   margin-left: auto;
 }
 
-/* Input area */
+/* 7. Input row */
 .input-row {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 0.5rem;
+  width: 100%;
+  max-width: 600px;
   margin-bottom: 1rem;
   flex-wrap: wrap;
 }
-
 .input-row input {
-  padding: 0.5rem;
-  width: 300px;
+  flex: 1;
+  padding: 0.75rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+  outline: none;
 }
-
 .input-row button {
-  padding: 0.5rem 1rem;
-  background-color: #3498db;
-  color: white;
+  padding: 0.75rem 1.25rem;
+  background-color: #3ab5fc;   /* blue button */
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
-
 .input-row button:hover {
-  background-color: #2980b9;
+  background-color: #0288d1;
 }
 
-/* Quick categories */
+/* 8. Category buttons */
 .categories {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 0.75rem;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
-
 .categories button {
-  padding: 0.5rem 1rem;
-  background-color: #2ecc71;
-  color: white;
+  padding: 0.6rem 1.2rem;
+  background-color: #3ab5fc;   /* blue */
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
+}
+.categories button:hover {
+  background-color: #0288d1;
 }
 
-.categories button:hover {
-  background-color: #27ae60;
+/* 9. Footer */
+.footer {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;            /* sits at bottom */
+}
+
+/* 10. FAQ page */
+.faq-list {
+  list-style: none;
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem 0;
+  text-align: left;
+  padding: 0;
+}
+.faq-list li {
+  background-color: #e3f2fd;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+}
+.faq-list li strong {
+  color: #003f63;
+}
+
+/* 11. Responsive tweaks */
+@media (max-width: 600px) {
+  .chat-box {
+    height: 35vh;
+  }
+  .input-row {
+    flex-direction: column;
+  }
+  .input-row input,
+  .input-row button {
+    width: 100%;
+  }
+  .categories {
+    flex-direction: column;
+  }
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar a {
+    margin: 0.5rem 0;
+  }
 }

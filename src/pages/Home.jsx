@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import '../index.css';
 
 function Home() {
@@ -10,31 +10,70 @@ function Home() {
   const handleSend = () => {
     if (!input.trim()) return;
 
-    const newMessage = { from: 'user', text: input };
-    setMessages([...messages, newMessage, botResponse(input)]);
+    const userMsg = { from: 'user', text: input };
+    const botMsg = generateResponse(input);
+    setMessages([...messages, userMsg, botMsg]);
     setInput('');
   };
 
-  const botResponse = (userInput) => {
-    let response = "I'm not sure how to help with that.";
-    if (userInput.toLowerCase().includes('printer')) {
-      response = 'Try restarting the printer and checking the connection.';
-    } else if (userInput.toLowerCase().includes('password')) {
-      response = 'You can reset your password at reset.company.com.';
-    } else if (userInput.toLowerCase().includes('email')) {
-      response = 'Check if your inbox is full or refresh your mail client.';
+  const generateResponse = (txt) => {
+    const question = txt.toLowerCase().trim();
+
+    // Define your rule‑based responses:
+    const rules = [
+      {
+        keywords: ['printer', 'print', 'printing'],
+        response: 'Try restarting the printer and checking its cable or Wi‑Fi connection.'
+      },
+      {
+        keywords: ['password', 'login', 'reset'],
+        response: 'To reset your password, visit https://reset.company.com and follow the steps.'
+      },
+      {
+        keywords: ['email', 'outlook', 'mail'],
+        response: 'Make sure your email client is online. Try refreshing or clearing cache.'
+      },
+      {
+        keywords: ['wifi', 'internet', 'network'],
+        response: 'Restart your router or switch to a different network to test connectivity.'
+      },
+      {
+        keywords: ['slow', 'lag', 'performance'],
+        response: 'Close unused apps, clear browser cache, and reboot your device to improve speed.'
+      }
+    ];
+
+    // Attempt to match any rule:
+    for (let { keywords, response } of rules) {
+      if (keywords.some(k => question.includes(k))) {
+        return { from: 'bot', text: response };
+      }
     }
 
-    return { from: 'bot', text: response };
+    // Fallback suggestions if no rule matched:
+    const suggestions = [
+      'Printer not working',
+      'Forgot my password',
+      'Email is down',
+      'WiFi issues'
+    ];
+    return {
+      from: 'bot',
+      text: `I’m not sure I understand that. Did you mean one of these?
+• “${suggestions[0]}”
+• “${suggestions[1]}”
+• “${suggestions[2]}”
+• “${suggestions[3]}”`
+    };
   };
 
   return (
     <div className="page-container">
-      <h1>AskLizzy – Office Tech Support</h1>
+      <h2>AskLizzy – Office Tech Support</h2>
 
       <div className="chat-box">
-        {messages.map((msg, i) => (
-          <div key={i} className={`message ${msg.from}`}>
+        {messages.map((msg, idx) => (
+          <div key={idx} className={`message ${msg.from}`}>
             <p>{msg.text}</p>
           </div>
         ))}
@@ -42,9 +81,11 @@ function Home() {
 
       <div className="input-row">
         <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          type="text"
           placeholder="Type your question..."
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && handleSend()}
         />
         <button onClick={handleSend}>Send</button>
       </div>

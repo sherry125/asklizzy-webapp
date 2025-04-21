@@ -1,0 +1,13 @@
+.header {
+    width: 100%;
+    background-color: #ff914d;    /* orange header */
+    display: flex;
+    justify-content: center;      /* center the logo horizontally */
+    align-items: center;          /* center the logo vertically */
+    padding: 0.75rem 0;           /* slimmer header so content below stays in view */
+  }
+  
+  .header-logo {
+    width: 50px;                  /* adjust size as needed */
+    height: auto;
+  }
