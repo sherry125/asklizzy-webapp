@@ -14,7 +14,7 @@ body {
 
 /* 2. Main content wrapper grows to fill available space */
 .page-container {
-  flex: 1;                     /* ← This pushes the footer down */
+  flex: 1;                     /* pushes the footer down */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +63,7 @@ body {
 .chat-box {
   width: 100%;
   max-width: 600px;
-  height: 40vh;                /* shorter so buttons/footer remain visible */
+  height: 40vh;                
   border: 2px solid #ced4da;
   border-radius: 10px;
   background-color: #ffffff;
@@ -144,7 +144,7 @@ body {
 
 /* 9. Footer */
 .footer {
-  width: 100%;
+  width: 95%;
   background-color: #333;
   color: #fff;
   text-align: center;

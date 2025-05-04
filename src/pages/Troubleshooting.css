@@ -1,0 +1,137 @@
+/* Troubleshooting.css */
+
+/* Center page content */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    min-height: 70vh;
+    text-align: center;
+    background-color: #f5f5f5;
+  }
+  
+  /* Page heading */
+  .page-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Page description */
+  .page-container p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+  
+  /* Chatbox container */
+  .chat-box {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    border: 2px solid #ced4da;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Chat messages */
+  .message {
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
+  
+  .message.bot {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    align-self: flex-start;
+    text-align: left;
+  }
+  
+  .message.user {
+    background-color: #d1ecf1;
+    color: #006064;
+    align-self: flex-end;
+    margin-left: auto;
+    text-align: right;
+  }
+  
+  /* Input section */
+  .input-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .input-row input {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+  
+  .input-row button {
+    padding: 0.75rem 1.25rem;
+    background-color: #3ab5fc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .input-row button:hover {
+    background-color: #0288d1;
+  }
+  
+  /* Quick action buttons */
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  .categories button {
+    padding: 0.6rem 1.2rem;
+    background-color: #3ab5fc;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .categories button:hover {
+    background-color: #0288d1;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 600px) {
+    .chat-box {
+      height: 250px;
+    }
+    .input-row {
+      flex-direction: column;
+    }
+    .input-row input,
+    .input-row button {
+      width: 100%;
+    }
+    .categories {
+      flex-direction: column;
+    }
+  }  
