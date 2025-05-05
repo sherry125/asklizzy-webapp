@@ -21,7 +21,7 @@ function Chatbot({ quickOptions = [] }) {
 
   const botResponse = (txt) => {
     const q = txt.toLowerCase();
-
+    //Rule-base to match user's input
     const rules = [
       { keywords: ['printer','print','printing'], response: 'Try restarting the printer, clearing any paper jams, and checking its USB or Wi-Fi connection.' },
       { keywords: ['password','login','reset'],       response: 'Reset your password at https://reset.company.com. If you’re locked out contact IT.' },
@@ -50,7 +50,7 @@ function Chatbot({ quickOptions = [] }) {
         return { from: 'bot', text: response };
       }
     }
-
+    // Fallback suggestions if user's input doesn't match the rule-base
     const suggestions = [
       'Printer not working',
       'Forgot my password',
